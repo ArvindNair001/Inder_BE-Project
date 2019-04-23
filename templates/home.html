@@ -1,0 +1,29 @@
+﻿{% extends 'layout.html' %}
+{% block body %}
+   <div class="cd">
+        <h1>BE PROJECT</h1>
+        <p class="ab"><b>GENERALIZED SENTIMENT LEARNER USING DEEP LEARNING</b></p>
+    
+        <form name="passdata" action="." method=POST enctype=multipart/form-data>
+            <input type=file name=file2>
+            <input value=Upload>
+            <input class="gh" type="text" name="inptext" placeholder="Enter the text"><br>
+            <input class="button" type="submit" value="Analyze">
+        </form>
+    </div>
+    <script>
+        $('document').ready(function(){
+            $('form').on('submit',function(event) {
+                $.ajax({
+                    type: "POST",
+                    url: "/process",
+                    success: function(response) {
+                        alert('This Works');
+                    }
+                })
+                .done(function() {});
+                event.preventDefault();
+            }); 
+        });
+    </script>
+{% endblock %}

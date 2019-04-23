@@ -1,0 +1,81 @@
+
+.cd {
+    background-color: #FBEEE6;
+    border: 3px solid black;
+    box-shadow: 10px 10px grey;
+    padding: 0px;
+    margin: 0 auto;
+    margin-top: 8%;
+    height: 500px;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #922B21;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #922B21;
+}
+
+p {
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 3px;
+    margin: 50px 250px;
+}
+
+a {
+    text-decoration: none;
+    color: #008CBA;
+}
+
+.button {
+    background-color: #F5CBA7;
+    border: 1px;
+    box-shadow: 10px 10px grey;
+    color: black;
+    padding: 30px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0px 200px;
+    cursor: pointer;
+    border-radius: 20px;
+    align-items: center;
+}
+
+input {
+    background-color: #F5CBA7;
+    border: none;
+    box-shadow: 10px 10px grey;
+    color: black;
+    padding: 30px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px 150px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #f1f1f1;
+}
+
+.ab {
+    text-indent: 50px;
+    text-align: none;
+    letter-spacing: 3px;
+    margin: 50px 270px;
+    text-align: center;
+}
+
+.gh {
+    margin: 50px 150px;
+}
