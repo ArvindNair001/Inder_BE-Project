@@ -4,26 +4,50 @@
         <h1>BE PROJECT</h1>
         <p class="ab"><b>GENERALIZED SENTIMENT LEARNER USING DEEP LEARNING</b></p>
     
-        <form name="passdata" action="." method=POST enctype=multipart/form-data>
-            <input type=file name=file2>
-            <input value=Upload>
-            <input class="gh" type="text" name="inptext" placeholder="Enter the text"><br>
-            <input class="button" type="submit" value="Analyze">
+        <form id="formData" action="." method=POST enctype=multipart/form-data>
+            <input type=file id="fileInput">
+            <!-- <input value=Upload> -->
+            <button class="button" type="button" id="uploadBtn">Upload</button>
+            <input class="gh" type="text" id="inputText" placeholder="Enter the text"><br>
+            <!-- <input class="button" type="submit" value="Analyze"> -->
+            <button class="button" type="submit">Analyze</button>
         </form>
     </div>
     <script>
         $('document').ready(function(){
             $('form').on('submit',function(event) {
                 $.ajax({
+                    data: {
+                        inputdata: $('#inputText').val(),
+                    },
                     type: "POST",
-                    url: "/process",
-                    success: function(response) {
-                        alert('This Works');
-                    }
+                    dataType: "application/json",
+                    url: "/process"
                 })
-                .done(function() {});
+                .done(function(response) {
+                });
                 event.preventDefault();
-            }); 
+            });
+            $('#fileInput').on('change',function(event) {
+                var file = $('#fileInput')[0].files[0];
+                var fileName = file.name;
+                console.log("file is ",file," file name is ",fileName);
+                $('#uploadBtn').on('click',function(event) {
+                    var form_data = new FormData();
+                    form_data.append('file',file);
+                    $.ajax({
+                        data: form_data,
+                        type: "POST",
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        url: "/upload"
+                    })
+                        .done(function(response) {
+                            console.log('success');
+                        });
+                });
+            });  
         });
     </script>
 {% endblock %}
