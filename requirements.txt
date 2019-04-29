@@ -1,0 +1,6 @@
+nltk==3.4.1
+docopt==0.6.2
+numpy==1.16.3
+Flask==1.0.2
+Werkzeug==0.15.1
+tree==0.2.4

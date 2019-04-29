@@ -2,7 +2,9 @@ import flask
 from flask import Flask, url_for, request, render_template,jsonify;
 from werkzeug import secure_filename
 import os
-from app import app;
+from app import app
+from tester import tester
+import time
 
 # print(os.getcwd())
 UPLOAD_FOLDER = os.path.join(os.getcwd(),'Files')
@@ -20,10 +22,11 @@ def index():
 
 @app.route('/process',methods=['POST'])
 def execute():
-    if request.method == 'POST':
-        data = request.form['inputdata']
-        return jsonify({'data': data})
-    return jsonify({'error': 'Invalid method'})
+    req = request.get_json()
+    data = req['inputData']
+    timestr = time.strftime("%Y%m%d%H%M%S")
+    tester(data,timestr)
+    return jsonify({'sucess':True,'image_name': 'tree-'+timestr+'.jpg'}), 200, {"contentType":'application/json' }
     
 @app.route('/upload',methods=['POST'])
 def upload():
@@ -35,9 +38,3 @@ def upload():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return ''
         
-@app.route('/jsontest',methods=['POST'])
-def jsontest():
-    data = request.get_json()
-    name = data['name']
-    age = data['age']
-    return jsonify({'success': 'ok', 'name': name, 'age': age})
