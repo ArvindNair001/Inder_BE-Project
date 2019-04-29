@@ -32,7 +32,8 @@ def tester(data,timestr):
         cf.add_widget(tc,10,10) # (10,10) offsets
         cf.print_to_file('tree.ps')
         cf.destroy()
-        os.system('convert tree.ps ./static/images/tree-'+timestr+'.jpg')
+        # os.system('convert tree.ps ./static/images/tree-'+timestr+'.jpg')
+        os.system('convert -density 300 -trim -quality 100 -flatten -sharpen 0x1.0 tree.ps ./static/images/tree-'+timestr+'.jpg')
         os.path
         
 if __name__ == "__main__":
